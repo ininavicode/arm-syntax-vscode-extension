@@ -1,0 +1,47 @@
+{
+	"name": "ARM Assembly",
+	"scopeName": "source.arm",
+	"fileTypes": [
+		"s",
+		"asm",
+		"arm",
+		"i"
+	],
+	"patterns": [
+		{
+			"name": "keyword.mnemonic.arm",
+			"match": "\\b(swi|push|pop|add|adc|sub|sbc|rsb|rsc|cmp|cmn|mul|umull|smull|umlal|smlal|mla|mov|mvn|and|orr|eor|bic|tst|teq|b|bl)(eq|ne|cs|hs|cc|lo|mi|pl|vs|vc|hi|ls|ge|lt|gt|le|al)?\\b"
+		},
+		{
+			"name": "keyword.mnemonic.arm",
+			"match": "\\b(str|ldr|lds|ldm|stm|swp)(eq|ne|cs|hs|cc|lo|mi|pl|vs|vc|hi|ls|ge|lt|gt|le|al)?(h|b)?\\b"
+		},
+		{
+			"name": "displacement_op2.arm",
+			"match": "\\b(lsl|lsr|asr|ror)\\b"
+		},
+		{
+			"name": "comment.line.arm",
+			"match": "(@;).*"
+		},
+		{
+			"name": "variable.register.arm",
+			"match": "\\b(r[0-9]|r1[0-5]|fp|sp|lr|pc)\\b"
+		},
+		{
+			"name": "constant.numeric.arm",
+			"match": "#(-?(0x[0-9A-Fa-f]+|0b[01]+|0o[0-7]+|[0-9]+|[a-zA-Z_][a-zA-Z0-9_]*))"
+		},
+		{
+			"name": "entity.name.label.arm",
+			"match": "\\.L[a-zA-Z0-9_]+"
+		},
+		{
+			"name": "support.directive.arm",
+			"match": "\\.(bss|section|data|text|align|arm|thumb|thumb_func|end|global|include|ascii|asciz|byte|hword|word|space|fill)"
+		}
+	],
+	"repository": {},
+	"scope": "source.arm",
+	"uuid": "cbfcf5f4-04da-4f65-9f86-83525e4daeb8"
+}

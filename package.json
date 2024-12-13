@@ -1,0 +1,155 @@
+{
+  "name": "arm-syntax",
+  "displayName": "arm-syntax",
+  "description": "Colorful assembly syntax",
+  "version": "0.0.4",
+  "publisher": "Javier Mejias Reverté",
+  "icon": "images/logo.png",
+  "engines": {
+    "vscode": "^1.95.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "activationEvents": [
+    "onLanguage:arm"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "languages": [
+      {
+        "id": "arm",
+        "aliases": [
+          "ARM Assembly",
+          "arm"
+        ],
+        "extensions": [
+          ".s",
+          ".asm",
+          ".arm",
+          ".i"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "arm",
+        "scopeName": "source.arm",
+        "path": "./syntaxes/arm.tmLanguage.json"
+      }
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "ARM Syntax Settings",
+      "properties": {
+        "armSyntax.colors.mnemonics": {
+          "type": "string",
+          "default": "#4CAEAE",
+          "description": "Color for mnemonics (e.g., add, sub, mov)."
+        },
+        "armSyntax.bold.mnemonics": {
+          "type": "boolean",
+          "default": true,
+          "description": "Apply bold styling to mnemonics."
+        },
+        "armSyntax.italic.mnemonics": {
+          "type": "boolean",
+          "default": false,
+          "description": "Apply italic styling to mnemonics."
+        },
+        "armSyntax.colors.comments": {
+          "type": "string",
+          "default": "#7EC699",
+          "description": "Color for comments."
+        },
+        "armSyntax.bold.comments": {
+          "type": "boolean",
+          "default": false,
+          "description": "Apply bold styling to comments."
+        },
+        "armSyntax.italic.comments": {
+          "type": "boolean",
+          "default": true,
+          "description": "Apply italic styling to comments."
+        },
+        "armSyntax.colors.registers": {
+          "type": "string",
+          "default": "#68A9EB",
+          "description": "Color for registers (e.g., r0, sp)."
+        },
+        "armSyntax.bold.registers": {
+          "type": "boolean",
+          "default": false,
+          "description": "Apply bold styling to registers."
+        },
+        "armSyntax.italic.registers": {
+          "type": "boolean",
+          "default": false,
+          "description": "Apply italic styling to registers."
+        },
+        "armSyntax.colors.constants": {
+          "type": "string",
+          "default": "#D34AD8",
+          "description": "Color for constants (e.g., #10, #0x1F)."
+        },
+        "armSyntax.bold.constants": {
+          "type": "boolean",
+          "default": false,
+          "description": "Apply bold styling to constants."
+        },
+        "armSyntax.italic.constants": {
+          "type": "boolean",
+          "default": false,
+          "description": "Apply italic styling to constants."
+        },
+        "armSyntax.colors.labels": {
+          "type": "string",
+          "default": "#FFD76A",
+          "description": "Color for labels (e.g., .LmyLabel)."
+        },
+        "armSyntax.bold.labels": {
+          "type": "boolean",
+          "default": false,
+          "description": "Apply bold styling to labels."
+        },
+        "armSyntax.italic.labels": {
+          "type": "boolean",
+          "default": false,
+          "description": "Apply italic styling to labels."
+        },
+        "armSyntax.colors.directives": {
+          "type": "string",
+          "default": "#FD4444",
+          "description": "Color for directives (e.g., .text, .data)."
+        },
+        "armSyntax.bold.directives": {
+          "type": "boolean",
+          "default": false,
+          "description": "Apply bold styling to directives."
+        },
+        "armSyntax.italic.directives": {
+          "type": "boolean",
+          "default": false,
+          "description": "Apply italic styling to directives."
+        },
+        "armSyntax.colors.displacements": {
+          "type": "string",
+          "default": "#E8F348",
+          "description": "Color for displacement operators (e.g., lsl, asr)."
+        },
+        "armSyntax.bold.displacements": {
+          "type": "boolean",
+          "default": false,
+          "description": "Apply bold styling to displacements."
+        },
+        "armSyntax.italic.displacements": {
+          "type": "boolean",
+          "default": false,
+          "description": "Apply italic styling to displacements."
+        }
+      }
+    }
+  },
+  "README": "./README.md"
+}
