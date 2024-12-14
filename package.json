@@ -2,9 +2,13 @@
   "name": "arm-syntax",
   "displayName": "arm-syntax",
   "description": "Colorful assembly syntax",
-  "version": "0.0.4",
-  "publisher": "Javier Mejias Reverté",
+  "version": "0.0.5",
+  "publisher": "ininavicode",
   "icon": "images/logo.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ininavicode/arm-syntax-vscode-extension.git"
+  },
   "engines": {
     "vscode": "^1.95.0"
   },

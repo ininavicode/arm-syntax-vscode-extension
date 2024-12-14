@@ -73,3 +73,6 @@ Changed default colors
 
 ### V0.0.4 
 **swi** keyword added to mnemonics
+
+### V0.0.5
+Fixed error detecting inmediate values.
