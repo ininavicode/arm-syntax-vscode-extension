@@ -1,4 +1,4 @@
-name: Build and Release VSCode Extension
+name: Build and Release VSCode Extension in GitHub
 
 on:
   push:
@@ -10,7 +10,7 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     outputs:
-      current_version: ${{ steps.version_bump.outputs.current_version }}
+      current_version: ${{ steps.compute_version.outputs.current_version }}
 
     steps:
       - name: Checkout Repository
@@ -27,7 +27,7 @@ jobs:
         run: npm install -g @vscode/vsce
 
       - name: Bump Version
-        id: version_bump
+        id: compute_version
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"1
