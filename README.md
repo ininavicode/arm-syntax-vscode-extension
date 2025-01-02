@@ -1,3 +1,5 @@
+[![VSCode extensions marketplace][vscode-shield]][vscode-url]
+
 # ARM Syntax README
 
 ## Author
@@ -123,7 +125,10 @@ Fixed error detecting inmediate values.
 
 
 
-[nodejs-shield]: https://img.shields.io/badge/nodeJS-20.x.x-orange?style=for-the-badge&logo=nodejs&logoColor=white
+[nodejs-shield]: https://img.shields.io/badge/nodeJS-20.x.x-orange?style=for-the-badge&logo=nodedotjs&logoColor=white
 [nodejs-url]: https://jquery.com
-[vsce-shield]: https://img.shields.io/badge/vsce-3.2.1-white?style=for-the-badge&logo=vscode&logoColor=black
+[vsce-shield]: https://img.shields.io/badge/vsce-3.2.1-white?style=for-the-badge&logo=vscodium&logoColor=black
 [vsce-url]: https://github.com/microsoft/vscode-vsce
+[vscode-shield]: https://img.shields.io/visual-studio-marketplace/i/ininavicode.arm-syntax
+[vscode-url]: https://marketplace.visualstudio.com/items?itemName=ininavicode.arm-syntax
+
