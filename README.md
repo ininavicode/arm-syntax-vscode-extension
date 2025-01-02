@@ -129,6 +129,6 @@ Fixed error detecting inmediate values.
 [nodejs-url]: https://jquery.com
 [vsce-shield]: https://img.shields.io/badge/vsce-3.2.1-white?style=for-the-badge&logo=vscodium&logoColor=black
 [vsce-url]: https://github.com/microsoft/vscode-vsce
-[vscode-shield]: https://img.shields.io/visual-studio-marketplace/i/ininavicode.arm-syntax?label=VSCode%20marketplace%20downloads
+[vscode-shield]: https://img.shields.io/visual-studio-marketplace/i/ininavicode.arm-syntax?label=VSCode%20marketplace%20installations
 [vscode-url]: https://marketplace.visualstudio.com/items?itemName=ininavicode.arm-syntax
 
