@@ -35,6 +35,14 @@ jobs:
 
       - name: Build VSIX Package
         run: vsce package --out arm-syntax-vscode-extension-${{ env.new_version }}.vsix
+        
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Build VSIX Package
+        run: vsce package --out arm-syntax-vscode-extension-${{ env.new_version }}.vsix
 
       - name: Create GitHub Release
         uses: ncipollo/release-action@v1
