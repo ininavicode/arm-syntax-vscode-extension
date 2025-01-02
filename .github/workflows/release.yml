@@ -27,11 +27,11 @@ jobs:
       - name: Bump Version
         id: version_bump
         run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"1
           CURRENT_VERSION=$(node -p "require('./package.json').version")
           echo "Current version: $CURRENT_VERSION"
-          npm version patch -m "Automated version bump to %s"
-          NEW_VERSION=$(node -p "require('./package.json').version")
-          echo "new_version=$NEW_VERSION" >> $GITHUB_ENV
+          echo "new_version=$CURRENT_VERSION" >> $GITHUB_ENV
 
       - name: Build VSIX Package
         run: vsce package --out arm-syntax-vscode-extension-${{ env.new_version }}.vsix
