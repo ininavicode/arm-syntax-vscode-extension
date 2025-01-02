@@ -42,8 +42,10 @@ None required.
 1. Open terminal with `Ctrl` + `Alt` + `T` or by opening the Terminal application.
 2. Type the following commands:
 ```shell
+VERSION=$(curl -s https://api.github.com/repos/ininavicode/arm-syntax-vscode-extension/releases/latest | grep "tag_name" | cut -d '"' -f 4)
+VERSION=${VERSION:1}
 wget -O arm-syntax-vscode-extension.vsix \
-  https://github.com/ininavicode/arm-syntax-vscode-extension/archive/refs/tags/$(curl -s https://api.github.com/repos/ininavicode/arm-syntax-vscode-extension/releases/latest | grep "tag_name" | cut -d '"' -f 4).vsix  # Download latest release
+  https://github.com/ininavicode/arm-syntax-vscode-extension/releases/download/v${VERSION}/arm-syntax-vscode-extension-${VERSION}.vsix  # Download latest release
 code --install-extension arm-syntax-vscode-extension.vsix  # Install extension
 ```
 
