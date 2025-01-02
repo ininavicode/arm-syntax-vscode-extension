@@ -37,7 +37,7 @@ Configurable color, bold, italic for each keyword type.
 2. Type the following commands:
 ```shell
 wget -O arm-syntax-vscode-extension.vsix \
-  https://github.com/ininavicode/arm-syntax-vscode-extension/archive/refs/tags/$(curl -s https://api.github.com/repos/torvalds/linux/releases/latest | grep "tag_name" | cut -d '"' -f 4).vsix  # Download latest release
+  https://github.com/ininavicode/arm-syntax-vscode-extension/archive/refs/tags/$(curl -s https://api.github.com/repos/ininavicode/arm-syntax-vscode-extension/releases/latest | grep "tag_name" | cut -d '"' -f 4).vsix  # Download latest release
 code --install-extension arm-syntax-vscode-extension.vsix  # Install extension
 ```
 
