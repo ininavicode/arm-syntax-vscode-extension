@@ -24,6 +24,10 @@ Configurable color, bold, italic for each keyword type.
 
 ## Installing
 
+### Requirements
+
+None required.
+
 ### From VSCode
 
 1. Open **Extensions** in VSCode
@@ -50,7 +54,7 @@ code --install-extension arm-syntax-vscode-extension.vsix  # Install extension
 * [![nodejs][nodejs-shield]][nodejs-url]
 * [![vsce][vsce-shield]][vsce-url]
 
-### How to install requirements
+### Install build requirements
 
 ```shell
 # Install node version manager
@@ -64,7 +68,7 @@ nvm use 20
 npm install -g @vscode/vsce
 ```
 
-### Building instructions
+### Build instructions
 
 ```shell
 # Clone repo
@@ -76,15 +80,6 @@ cd arm-syntax-vscode-extension
 # Build extension
 vsce package --out arm-syntax-vscode-extension.vsix
 ```
-
-
-### From shell
-
----
-
-## Requirements
-
-None required.
 
 ---
 
