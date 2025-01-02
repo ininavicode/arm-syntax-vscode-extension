@@ -128,7 +128,7 @@ Fixed error detecting inmediate values.
 
 
 [nodejs-shield]: https://img.shields.io/badge/nodeJS-20.x.x-orange?style=for-the-badge&logo=nodedotjs&logoColor=white
-[nodejs-url]: https://jquery.com
+[nodejs-url]: https://nodejs.org/en
 [vsce-shield]: https://img.shields.io/badge/vsce-3.2.1-white?style=for-the-badge&logo=vscodium&logoColor=black
 [vsce-url]: https://github.com/microsoft/vscode-vsce
 [vscode-shield]: https://img.shields.io/visual-studio-marketplace/i/ininavicode.arm-syntax?label=VSCode%20marketplace%20installations
