@@ -38,6 +38,7 @@ jobs:
 
       - name: Create GitHub Release
         uses: ncipollo/release-action@v1
+        allowUpdates: true
         with:
           artifacts: arm-syntax-vscode-extension-${{ env.new_version }}.vsix
           tag: v${{ env.new_version }}
