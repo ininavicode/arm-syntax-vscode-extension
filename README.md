@@ -12,7 +12,7 @@ Javier Mejias Reverté
 ## Features
 
 Color Syntax Highlighting for ARM Assembly (keywords from **The ARM Instruction Set - ARM University Program - V1.0</**)
-Instruction Set is adapted for **URV - ETSE - DEIM - Computadors**
+Instruction Set is adapted for **URV - ETSE - DEIM - Fonaments de Computadors - Computadors - Estructura de Sistemes Operatius**
 
 Color Syntax Highlighting is applied to the following file extensions:
 - .s
