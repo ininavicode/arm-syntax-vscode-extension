@@ -2,7 +2,7 @@
   "name": "arm-syntax",
   "displayName": "arm-syntax",
   "description": "Colorful assembly syntax",
-  "version": "0.0.7",
+  "version": "0.0.5",
   "publisher": "ininavicode",
   "icon": "images/logo.png",
   "repository": {
