@@ -31,7 +31,7 @@ jobs:
           git config user.email "github-actions@github.com"1
           CURRENT_VERSION=$(node -p "require('./package.json').version")
           echo "Current version: $CURRENT_VERSION"
-          echo "current_version=$CURRENT_VERSION" >> $GITHUB_ENV
+          echo "current_version=$CURRENT_VERSION" >> $GITHUB_OUTPUT
 
       - name: Build VSIX Package
         run: vsce package --out arm-syntax-vscode-extension-${{ env.current_version }}.vsix
@@ -45,10 +45,10 @@ jobs:
       - name: Create GitHub Release
         uses: ncipollo/release-action@v1
         with:
-          artifacts: arm-syntax-vscode-extension-${{ env.current_version }}.vsix
-          tag: v${{ env.current_version }}
-          name: "Release v${{ env.current_version }}"
-          body: "Automated release of version v${{ env.current_version }}"
+          artifacts: arm-syntax-vscode-extension-${{ needs.build.outputs.current_version }}.vsix
+          tag: v${{ needs.build.outputs.current_version }}
+          name: "Release v${{ needs.build.outputs.current_version }}"
+          body: "Automated release of version v${{ needs.build.outputs.current_version }}"
           allowUpdates: true
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
