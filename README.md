@@ -123,7 +123,7 @@ Fixed error detecting inmediate values.
 
 
 
-[nodejs-shield]: https://img.shields.io/badge/nodeJS-20.x.x-orange?style=for-the-badge&logo=jquery&logoColor=white
+[nodejs-shield]: https://img.shields.io/badge/nodeJS-20.x.x-orange?style=for-the-badge&logo=nodejs&logoColor=white
 [nodejs-url]: https://jquery.com
-[vsce-shield]: https://img.shields.io/badge/vsce-3.2.1-white?style=for-the-badge&logo=bootstrap&logoColor=black
+[vsce-shield]: https://img.shields.io/badge/vsce-3.2.1-white?style=for-the-badge&logo=vscode&logoColor=black
 [vsce-url]: https://github.com/microsoft/vscode-vsce
