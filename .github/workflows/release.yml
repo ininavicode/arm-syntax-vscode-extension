@@ -1,0 +1,36 @@
+name: Build and Release VSCode Extension
+
+on:
+  push:
+
+
+
+jobs:
+  build:
+    name: Build and Package Extension
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install vsce
+        run: npm install -g @vscode/vsce
+
+      - name: Build VSIX Package
+        run: vsce package --out arm-syntax-vscode-extension.vsix
+
+      - name: Create GitHub Release
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: "arm-syntax-vscode-extension.vsix"
+          tag: ${{ github.ref_name }}
+          name: "Release ${{ github.ref_name }}"
+          body: "Automated release of arm-syntax-vscode-extension"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

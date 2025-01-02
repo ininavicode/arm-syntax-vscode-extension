@@ -31,6 +31,55 @@ Configurable color, bold, italic for each keyword type.
 3. Select **Install from VSIX**
 4. Choose your **.vsix file**
 
+### From shell
+
+1. Open terminal with `Ctrl` + `Alt` + `T` or by opening the Terminal application.
+2. Type the following commands:
+```shell
+wget -O arm-syntax-vscode-extension.vsix \
+  https://github.com/ininavicode/arm-syntax-vscode-extension/archive/refs/tags/$(curl -s https://api.github.com/repos/torvalds/linux/releases/latest | grep "tag_name" | cut -d '"' -f 4).vsix  # Download latest release
+code --install-extension arm-syntax-vscode-extension.vsix  # Install extension
+```
+
+---
+
+## Building
+
+### Requirements
+
+* [![nodejs][nodejs-shield]][nodejs-url]
+* [![vsce][vsce-shield]][vsce-url]
+
+### How to install requirements
+
+```shell
+# Install node version manager
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash  
+
+# Set up nvm to use nodeJS 20.x.x
+nvm install 20
+nvm use 20
+
+# Install vsce
+npm install -g @vscode/vsce
+```
+
+### Building instructions
+
+```shell
+# Clone repo
+git clone https://github.com/ininavicode/arm-syntax-vscode-extension
+
+# Navigate inside the folder
+cd arm-syntax-vscode-extension
+
+# Build extension
+vsce package --out arm-syntax-vscode-extension.vsix
+```
+
+
+### From shell
+
 ---
 
 ## Requirements
@@ -76,3 +125,10 @@ Changed default colors
 
 ### V0.0.5
 Fixed error detecting inmediate values.
+
+
+
+[nodejs-shield]: https://img.shields.io/badge/nodeJS-20.x.x-orange?style=for-the-badge&logo=jquery&logoColor=white
+[nodejs-url]: https://jquery.com
+[vsce-shield]: https://img.shields.io/badge/vsce-3.2.1-white?style=for-the-badge&logo=bootstrap&logoColor=black
+[vsce-url]: https://github.com/microsoft/vscode-vsce
