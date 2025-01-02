@@ -2,17 +2,19 @@ name: Build and Release VSCode Extension
 
 on:
   push:
-
-
+    branches:
+      - main  # Trigger on pushes to the main branch
 
 jobs:
   build:
-    name: Build and Package Extension
+    name: Build, Version Bump, and Release
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -22,15 +24,30 @@ jobs:
       - name: Install vsce
         run: npm install -g @vscode/vsce
 
+      - name: Bump Version
+        id: version_bump
+        run: |
+          CURRENT_VERSION=$(node -p "require('./package.json').version")
+          echo "Current version: $CURRENT_VERSION"
+          npm version patch -m "Automated version bump to %s"
+          NEW_VERSION=$(node -p "require('./package.json').version")
+          echo "new_version=$NEW_VERSION" >> $GITHUB_ENV
+
+      - name: Push Version Bump
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git push origin HEAD:main --tags
+
       - name: Build VSIX Package
-        run: vsce package --out arm-syntax-vscode-extension.vsix
+        run: vsce package --out arm-syntax-vscode-extension-${{ env.new_version }}.vsix
 
       - name: Create GitHub Release
         uses: ncipollo/release-action@v1
         with:
-          artifacts: "arm-syntax-vscode-extension.vsix"
-          tag: ${{ github.ref_name }}
-          name: "Release ${{ github.ref_name }}"
-          body: "Automated release of arm-syntax-vscode-extension"
+          artifacts: arm-syntax-vscode-extension-${{ env.new_version }}.vsix
+          tag: v${{ env.new_version }}
+          name: "Release v${{ env.new_version }}"
+          body: "Automated release of version v${{ env.new_version }}"
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
