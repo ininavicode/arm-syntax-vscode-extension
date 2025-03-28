@@ -23,9 +23,6 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Install vsce
-        run: npm install -g @vscode/vsce
-
       - name: Bump Version
         id: compute_version
         run: |
@@ -42,6 +39,13 @@ jobs:
     needs: bump-version
 
     steps:
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install vsce
+        run: npm install -g @vscode/vsce
       - name: Build VSIX Package
         run: vsce package --out arm-syntax-vscode-extension-${{ needs.bump-version.outputs.current_version }}.vsix
         
