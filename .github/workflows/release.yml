@@ -6,8 +6,8 @@ on:
       - master  # Trigger on pushes to the main branch
 
 jobs:
-  build:
-    name: Build
+  bump-version:
+    name: Bump version
     runs-on: ubuntu-latest
     outputs:
       current_version: ${{ steps.compute_version.outputs.current_version }}
@@ -35,22 +35,29 @@ jobs:
           echo "Current version: $CURRENT_VERSION"
           echo "current_version=$CURRENT_VERSION" >> $GITHUB_OUTPUT
 
+        
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    needs: bump-version
+
+    steps:
       - name: Build VSIX Package
-        run: vsce package --out arm-syntax-vscode-extension-${{ needs.build.outputs.current_version }}.vsix
+        run: vsce package --out arm-syntax-vscode-extension-${{ needs.bump-version.outputs.current_version }}.vsix
         
   release:
     name: Release
     runs-on: ubuntu-latest
-    needs: build
+    needs: bump-version
 
     steps:
       - name: Create GitHub Release
         uses: ncipollo/release-action@v1
         with:
-          artifacts: arm-syntax-vscode-extension-${{ needs.build.outputs.current_version }}.vsix
-          tag: v${{ needs.build.outputs.current_version }}
-          name: "Release v${{ needs.build.outputs.current_version }}"
-          body: "Automated release of version v${{ needs.build.outputs.current_version }}"
+          artifacts: arm-syntax-vscode-extension-${{ needs.bump-version.outputs.current_version }}.vsix
+          tag: v${{ needs.bump-version.outputs.current_version }}
+          name: "Release v${{ needs.bump-version.outputs.current_version }}"
+          body: "Automated release of version v${{ needs.bump-version.outputs.current_version }}"
           allowUpdates: true
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
