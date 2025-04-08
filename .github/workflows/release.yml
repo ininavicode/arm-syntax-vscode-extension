@@ -1,0 +1,85 @@
+name: Build and Release VSCode Extension in GitHub
+
+on:
+  push:
+    branches:
+      - master  # Trigger on pushes to the main branch
+
+jobs:
+  bump-version:
+    name: Bump version
+    runs-on: ubuntu-latest
+    outputs:
+      current_version: ${{ steps.compute_version.outputs.current_version }}
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GH_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Bump Version
+        id: compute_version
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"1
+          CURRENT_VERSION=$(node -p "require('./package.json').version")
+          echo "Current version: $CURRENT_VERSION"
+          echo "current_version=$CURRENT_VERSION" >> $GITHUB_OUTPUT
+
+        
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    needs: bump-version
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GH_TOKEN }}
+          
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install vsce
+        run: npm install -g @vscode/vsce
+      - name: Build VSIX Package
+        run: vsce package --out arm-syntax-vscode-extension-${{ needs.bump-version.outputs.current_version }}.vsix
+      - uses: actions/upload-artifact@v4
+        with:
+          name: release
+          path: arm-syntax-vscode-extension-${{ needs.bump-version.outputs.current_version }}.vsix
+        
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    needs: 
+      - bump-version 
+      - build
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: release
+          path: .
+      - name: Create GitHub Release
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: arm-syntax-vscode-extension-${{ needs.bump-version.outputs.current_version }}.vsix
+          tag: v${{ needs.bump-version.outputs.current_version }}
+          name: "Release v${{ needs.bump-version.outputs.current_version }}"
+          body: "Automated release of version v${{ needs.bump-version.outputs.current_version }}"
+          allowUpdates: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+
+
