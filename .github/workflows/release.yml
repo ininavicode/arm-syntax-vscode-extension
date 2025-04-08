@@ -3,7 +3,8 @@ name: Build and Release VSCode Extension in GitHub
 on:
   push:
     branches:
-      - master  # Trigger on pushes to the main branch
+      - master  # Trigger on pushes to the main / masterbranch
+      - main
 
 jobs:
   bump-version:
