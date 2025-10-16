@@ -76,3 +76,6 @@ Changed default colors
 
 ### V0.0.5
 Fixed error detecting inmediate values.
+
+### V0.0.6
+'s' postfix included in syntax analisys
