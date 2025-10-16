@@ -10,11 +10,11 @@
 	"patterns": [
 		{
 			"name": "keyword.mnemonic.arm",
-			"match": "\\b(swi|push|pop|add|adc|sub|sbc|rsb|rsc|cmp|cmn|mul|umull|smull|umlal|smlal|mla|mov|mvn|and|orr|eor|bic|tst|teq|b|bl)(eq|ne|cs|hs|cc|lo|mi|pl|vs|vc|hi|ls|ge|lt|gt|le|al)?\\b"
+			"match": "\\b(swi|push|pop|add|adc|sub|sbc|rsb|rsc|cmp|cmn|mul|umull|smull|umlal|smlal|mla|mov|mvn|and|orr|eor|bic|tst|teq|b|bl)(eq|ne|cs|hs|cc|lo|mi|pl|vs|vc|hi|ls|ge|lt|gt|le|al)?(s)?\\b"
 		},
 		{
 			"name": "keyword.mnemonic.arm",
-			"match": "\\b(str|ldr|lds|ldm|stm|swp)(eq|ne|cs|hs|cc|lo|mi|pl|vs|vc|hi|ls|ge|lt|gt|le|al)?(h|b)?\\b"
+			"match": "\\b(str|ldr|lds|ldm|stm|swp)(eq|ne|cs|hs|cc|lo|mi|pl|vs|vc|hi|ls|ge|lt|gt|le|al)?(s)?(h|b)?\\b"
 		},
 		{
 			"name": "displacement_op2.arm",
